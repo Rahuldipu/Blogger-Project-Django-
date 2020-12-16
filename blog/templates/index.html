@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+	<!-- top-header and slider -->
+	<div class="w3-slider">	
+	<!-- main-slider -->
+		<ul id="demo1">
+			<li>
+				<img src="{% static 'images/1.jpg' %}" alt="" />
+				<!--Slider Description example-->
+				<div class="slide-desc">
+					<h3>Fashion</h3>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's dummy. </p>
+				</div>
+			</li>
+			<li>
+				<img src="{% static 'images/2.jpg' %}" alt="" />
+				  <div class="slide-desc">
+					<h3>Life Style </h3>
+					<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+				</div>
+			</li>
+			<li>
+				<img src="{% static 'images/3.jpg' %}" alt="" />
+				<div class="slide-desc">
+					<h3>Photography</h3>
+					<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature. </p>
+				</div>
+			</li>
+			
+		</ul>
+	</div>
+	<!-- //main-slider -->
+	<!-- //top-header and slider -->
+	<div class="container">
+		<div class="banner-btm-agile">
+		<!-- //btm-wthree-left -->
+			<div class="col-md-9 btm-wthree-left">
+
+
+				{% for i,j in all_post %}
+
+
+				<div class="wthree-top">
+					<div class="w3agile-top">
+						<div class="w3agile_special_deals_grid_left_grid" >
+							<a href="#"><img src="{{i.image.url}}" class="img-responsive" alt=""/></a>
+						</div>
+						<div class="w3agile-middle">
+						<ul>
+							<li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{i.date}}</a></li>
+
+							<li><a href="{% url 'like' i.id %}"><i class="fa fa-thumbs-up" aria-hidden="true"></i>{{ j }} Likes</a></li>
+							<li><a href="#"><i class="fa fa-comment" aria-hidden="true"></i>{{i.comment_set.count}} Comments</a></li>
+							
+						</ul>
+					</div>
+					</div>
+					
+					<div class="w3agile-bottom">
+						<div class="col-md-3 w3agile-left">
+							<h5>{{i.user.username}}</h5>
+						</div>
+						<div class="col-md-9 w3agile-right">
+							<h3><a href="{% url 'blogdetail' i.id %}">{{i.title}}</a></h3>
+							<p>{{i.description}}</p>
+							<a class="agileits w3layouts" href="{% url 'blogdetail' i.id %}">Read More <span class="glyphicon agileits w3layouts glyphicon-arrow-right" aria-hidden="true"></span></a>
+						</div>
+							<div class="clearfix"></div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+				<!-- wthree-top-1 -->
+
+
+
+
+			<div class="col-md-3 w3agile_blog_left">
+				<div class="wthreesearch">
+							<form action="#" method="post">
+								<input type="search" name="Search" placeholder="Search here" required="">
+								<button type="submit" class="btn btn-default search" aria-label="Left Align">
+									<i class="fa fa-search" aria-hidden="true"></i>
+								</button>
+							</form>
+						
+				</div>
+				
+				<div class="agileinfo_calender">
+				<h3>CONNECT SOCIALLY</h3>
+				<div class="w3ls-social-icons-1">
+					<a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+					<a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+					<a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a>
+					<a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+					<a class="linkedin" href="#"><i class="fa fa-google-plus"></i></a>
+					<a class="linkedin" href="#"><i class="fa fa-rss"></i></a>
+					<a class="linkedin" href="#"><i class="fa fa-behance"></i></a>
+				</div>
+				</div>
+				<div class="w3ls_popular_posts">
+					<h3>Popular Posts</h3>
+					{% for i in topthree %}
+					<div class="agileits_popular_posts_grid">
+						<div class="w3agile_special_deals_grid_left_grid">
+							<a href="singlepage.html"><img src="{{i.image.url}}" class="img-responsive" alt="" /></a>
+						</div>
+						<h4><a href="singlepage.html">{{i.title}}</a></h4>
+						<h5><i class="fa fa-calendar" aria-hidden="true"></i>{{i.date}}</h5>
+					</div>
+					{% endfor %}
+
+				</div>
+				
+				<div class="w3l_categories">
+
+					<h3>Categories</h3>
+					{% for i in all_cat %}
+					<ul>
+						<li><a href="#"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>{{i.name}}</a></li>
+						</ul>
+					{% endfor %}
+				</div>
+			<div class="w3ls_recent_posts">
+					<h3>Recent Posts</h3>
+				{% for i in recent %}
+					<div class="agileits_recent_posts_grid">
+						<div class="agileits_recent_posts_gridl">
+							<div class="w3agile_special_deals_grid_left_grid">
+									<a href="singlepage.html"><img src="{{i.image.url}}" class="img-responsive" alt="" /></a>
+								</div>
+						</div>
+						<div class="agileits_recent_posts_gridr">
+							<h4><a href="singlepage.html">{{i.title}}</a></h4>
+							<h5><i class="fa fa-calendar" aria-hidden="true"></i>{{i.date}}</h5>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				{% endfor %}
+
+
+					</div>
+				</div>
+			
+			</div>
+			<!-- //btm-wthree-right -->
+			<div class="clearfix"></div>
+		</iv>
+	</div>
+
+	<!-- copyright -->
+	<div class="copyright">
+		<div class="container">
+			<div class="w3agile-list">
+				<ul>
+					<li><a href="{% url 'home' %}">Home</a></li>
+					<li><a href="{% url 'about' %}">About</a></li>
+					<li><a href="{% url 'contact' %}">Contact</a></li>
+				</ul>
+			</div>
+			<div class="agileinfo">
+				<p>© 2017 Fashion Blog . All Rights Reserved . Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+			</div>
+		</div>
+	</div>
+{% for i in messages %}
+
+<h1 font-color="red">{{i}}</h1>
+{% endfor %}
+<!-- //copyright -->
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{% static 'js/bootstrap.js' %}"></script>
+{% endblock %}

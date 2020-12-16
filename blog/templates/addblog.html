@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+	<!-- banner -->
+	<div class="agile-banner">
+	</div>
+	<!-- //banner -->
+	<!-- breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="container">
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="{% url 'home' %}">Home</a></li>
+				<li class="active">Add Blog</li>
+			</ol>
+		</div>
+	</div>
+<!-- //breadcrumbs -->
+
+	<!-- contact -->
+	<div class="container">
+		<!-- mail -->
+	<div class="banner-bottom">
+			<div class="agileits_heading_section">
+				<h3 class="wthree_head">Add New Blog</h3>
+
+			</div>
+
+			<div class="w3ls_portfolio_grids w3_agile_mail_grids">
+				<form action="" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+						<div class="col-md-6 w3_agile_mail_grid">
+                            <select class="form-control" name="cid">
+                                {% for i in all_cat %}
+                                <option value="{{i.id}}">
+                                    {{i.name}}
+                                </option>
+                                {% endfor %}
+                            </select>
+                            <br>
+						</div>
+						<div class="col-md-6 w3_agile_mail_grid">
+                            <input class="form-control" type="text" placeholder="Enter Title Name" name="title"><br>
+						</div>
+
+                        <div class="col-md-6 w3_agile_mail_grid">
+                            <input class="form-control" type="text" placeholder="Enter SubTitle Name" name="subtitle">
+                        </div>
+                        <div class="col-md-6 w3_agile_mail_grid">
+                            <input class="form-control" type="file" value="choose file"  name="image">
+                        </div>
+
+                        <div class="col-md-12 w3_agile_mail_grid">
+                            <textarea class="form-control" name="description"></textarea>
+                        </div>
+						<div class="row">
+                            <center>
+						<input  type="submit" value="Add Blog" style="width: 50%" class="btn btn-warning"></center>
+					</div>
+
+
+					<div class="clearfix"> </div>
+				</form>
+			</div>
+
+	</div>
+
+	</div>
+{% endblock %}

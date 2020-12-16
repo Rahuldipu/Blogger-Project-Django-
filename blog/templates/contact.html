@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+	<!-- banner -->
+	<div class="agile-banner">
+	</div>
+	<!-- //banner -->
+	<!-- breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="container">
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="{% url 'home' %}">Home</a></li>
+				<li class="active">Contact</li>
+			</ol>
+		</div>
+	</div>
+<!-- //breadcrumbs -->
+
+	<!-- contact -->
+	<div class="container">
+		<!-- mail -->
+	<div class="banner-bottom">
+			<div class="agileits_heading_section">
+				<h3 class="wthree_head">Contact</h3>
+				<p class="agileinfo_para">Nam tempus lobortis sem non ornare in aliquet egestas, nisi mi vestibulum.</p>
+			</div>
+			<div class="agile-map">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.6206684631793!2d77.50858081497216!3d23.256886884834863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c41d41883264f%3A0x954cc81588dc28a1!2sTrinity+Institute+Of+Technology+%26+Research!5e0!3m2!1sen!2sin!4v1563872104946!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>			</div>
+			<div class="w3ls_portfolio_grids w3_agile_mail_grids">	
+				<form action="#" method="post">
+					<div class="col-md-6 w3_agile_mail_grid">
+						<span class="input input--ichiro">
+							<input class="input__field input__field--ichiro" type="text" id="input-25" placeholder=" " required="" />
+							<label class="input__label input__label--ichiro" for="input-25">
+								<span class="input__label-content input__label-content--ichiro">Your Name</span>
+							</label>
+						</span>
+						<span class="input input--ichiro">
+							<input class="input__field input__field--ichiro" type="email" id="input-26" placeholder=" " required="" />
+							<label class="input__label input__label--ichiro" for="input-26">
+								<span class="input__label-content input__label-content--ichiro">Your Email</span>
+							</label>
+						</span>
+						<span class="input input--ichiro">
+							<input class="input__field input__field--ichiro" type="text" id="input-27" placeholder=" " required="" />
+							<label class="input__label input__label--ichiro" for="input-27">
+								<span class="input__label-content input__label-content--ichiro">Your Phone Number</span>
+							</label>
+						</span>
+						<input type="submit" value="Submit">
+					</div>
+					<div class="col-md-6 w3_agile_mail_grid">
+						<textarea name="Message" placeholder="Your message here..." required=""></textarea>
+					</div>
+					<div class="clearfix"> </div>
+				</form>
+			</div>
+		
+	</div>
+
+
+	</div>
+{% endblock %}

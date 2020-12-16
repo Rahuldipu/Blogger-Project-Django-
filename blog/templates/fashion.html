@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+	<!-- banner -->
+	<div class="agile-banner">
+	</div>
+	<!-- //banner -->
+	<!-- breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="container">
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="{% url 'home' %}">Home</a></li>
+				<li><a href="{% url 'addblog' %}" class="active">Add Blog</a></li>
+			</ol>
+		</div>
+	</div>
+<!-- //breadcrumbs -->
+	<div class="container">
+		<div class="banner-btm-agile">
+			
+		<!-- //btm-wthree-left -->
+			<div class="col-md-9 btm-wthree-left">
+			<div class="agileits_heading_section">
+				<h3 class="wthree_head">Fashion</h3>
+				<p class="agileinfo_para">Nam tempus lobortis sem non ornare in aliquet egestas, nisi mi vestibulum.</p>
+			</div>
+				<div class="events w3">
+					<div class="events-main">
+						{% for i in all_post %}
+						<div class="events-top">	
+							<div class="col-md-6  w3ls fea-left">
+								<div class="w3agile_special_deals_grid_left_grid">
+									<a href="{% url 'blogdetail' i.id %}"><img src="{{i.image.url}}" class="img-responsive" alt="" /></a>
+								</div>
+							</div>
+							<div class="col-md-6 wthree fea-right">
+								<h3>{{i.title}} [{{i.category.name}}]</h3>
+								<h3>{{i.date}}</h3>
+								<p>{{i.description}}</p>
+								<a class="agileits w3layouts" href="{% url 'blogdetail' i.id %}">Read More <span class="glyphicon agileits w3layouts glyphicon-arrow-right" aria-hidden="true"></span></a>
+								<a class="agileits w3layouts" href="{% url 'deleteblog' i.id %}">Delete <span class="glyphicon agileits w3layouts glyphicon-arrow-right" aria-hidden="true"></span></a>
+
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						{% endfor %}
+					</div>
+					<nav class="events agileits">
+						<ul class="pagination w3_paging">
+							<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+							<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li>
+							<a href="#" aria-label="Next">
+							<span aria-hidden="true">»</span>
+							</a>
+							</li>
+						</ul>
+					</nav>
+				</div>	
+			</div>
+			<!-- //btm-wthree-left -->
+				<!-- btm-wthree-right -->
+			<div class="col-md-3 w3agile_blog_left">
+				<div class="wthreesearch">
+							<center><img src="{{detail.image.url}}" width="200px" height="200px"><br></center>
+							<center><a href="{% url 'edit' %}"><h4 style="color:blue">{{request.user.username}}</h4></center>
+							<center><a href="{% url 'change' %}" onchange="color:warning">Change Password</a></center>
+				</div>
+				
+				<div class="agileinfo_calender">
+				<h3>CONNECT SOCIALLY</h3>
+				<div class="w3ls-social-icons-1">
+					<a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+					<a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+					<a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a>
+					<a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+					<a class="linkedin" href="#"><i class="fa fa-google-plus"></i></a>
+					<a class="linkedin" href="#"><i class="fa fa-rss"></i></a>
+					<a class="linkedin" href="#"><i class="fa fa-behance"></i></a>
+				</div>
+				</div>
+				<div class="w3ls_popular_posts">
+					<h3>Popular Posts</h3>
+					{% for i in topthree %}
+					<div class="agileits_popular_posts_grid">
+						<div class="w3agile_special_deals_grid_left_grid">
+							<a href="singlepage.html"><img src="{{i.image.url}}" class="img-responsive" alt="" /></a>
+						</div>
+						<h4><a href="singlepage.html">{{i.title}}</a></h4>
+						<h5><i class="fa fa-calendar" aria-hidden="true"></i>{{i.date}}</h5>
+					</div>
+					{% endfor %}
+					</div>
+				
+				<div class="w3l_categories">
+					<h3>Categories</h3>
+					{% for i in all_cat %}
+					<ul>
+						<li><a href="singlepage.html"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>{{i.name}}</a></li>
+						</ul>
+					{% endfor %}
+				</div>
+			<div class="w3ls_recent_posts">
+					<h3>Recent Posts</h3>
+				{% for i in recent %}
+					<div class="agileits_recent_posts_grid">
+						<div class="agileits_recent_posts_gridl">
+							<div class="w3agile_special_deals_grid_left_grid">
+									<a href="singlepage.html"><img src="{{i.image.url}}" class="img-responsive" alt="" /></a>
+								</div>
+						</div>
+						<div class="agileits_recent_posts_gridr">
+							<h4><a href="singlepage.html">{{i.title}}</a></h4>
+							<h5><i class="fa fa-calendar" aria-hidden="true"></i>{{i.date}}</h5>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				{% endfor %}
+				</div>
+			
+			</div>
+			<!-- //btm-wthree-right -->
+			<div class="clearfix"></div>
+		</div>
+	</div>
+{% endblock %}	

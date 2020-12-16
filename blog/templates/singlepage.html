@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+	<!-- banner -->
+	<div class="agile-banner">
+	</div>
+	<!-- //banner -->
+	<!-- breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="container">
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="{% url 'home' %}">Home</a></li>
+				<li class="active">Single Page</li>
+			</ol>
+		</div>
+	</div>
+<!-- //breadcrumbs -->
+	<div class="container">
+		<div class="banner-btm-agile">
+		<!-- //btm-wthree-left -->
+			<div class="col-md-9 btm-wthree-left">
+				<div class="single-left">
+				<div class="single-left1">
+					<img src="{{detail.image.url}}" alt=" " class="img-responsive" />
+					<h3>{{detail.title}} [{{detail.category.name}}]</h3>
+					<ul>
+						<li><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a href="#">Michael Smith</a></li>
+						<li><span class="glyphicon glyphicon-tag" aria-hidden="true"></span><a href="#">5 Tags</a></li>
+						<li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="#">5 Comments</a></li>
+					</ul>
+					<p>{{detail.description}}</p>
+				</div>
+
+				<div class="comments">
+					<h3>Our Recent Comments</h3>
+					<div class="comments-grids">
+						{% for i in detail.comment_set.all %}
+						<div class="comments-grid">
+							<div class="comments-grid-left">
+								<img src="{{i.userdetail.image.url}}" alt=" " class="img-responsive" />
+							</div>
+							<div class="comments-grid-right">
+								<h4><a href="#">{{i.user.username}}</a></h4>
+								<ul>
+									<li>{{i.date}}<i>|</i></li>
+									<li><a href="#">Reply</a></li>
+								</ul>
+								<p>{{i.comment}}</p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						{% endfor %}
+
+					</div>
+				</div>
+				<div class="leave-coment-form">
+					<h3>Leave Your Comment</h3>
+					<form action="{% url 'blogcomment' detail.id %}" method="post">
+						{% csrf_token %}
+
+
+						<textarea name="Message" placeholder="Your comment here..." required=""></textarea>
+						<div class="w3_single_submit">
+							<input type="submit" value="Submit Comment" >
+						</div>
+					</form>
+				</div>
+			</div>
+
+			</div>
+			<!-- //btm-wthree-left -->
+				<!-- btm-wthree-right -->
+			<div class="col-md-3 w3agile_blog_left">
+				<div class="wthreesearch">
+							<form action="#" method="post">
+								<input type="search" name="Search" placeholder="Search here" required="">
+								<button type="submit" class="btn btn-default search" aria-label="Left Align">
+									<i class="fa fa-search" aria-hidden="true"></i>
+								</button>
+							</form>
+						
+				</div>
+				
+				<div class="agileinfo_calender">
+				<h3>CONNECT SOCIALLY</h3>
+				<div class="w3ls-social-icons-1">
+					<a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+					<a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+					<a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a>
+					<a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+					<a class="linkedin" href="#"><i class="fa fa-google-plus"></i></a>
+					<a class="linkedin" href="#"><i class="fa fa-rss"></i></a>
+					<a class="linkedin" href="#"><i class="fa fa-behance"></i></a>
+				</div>
+				</div>
+				<div class="w3ls_popular_posts">
+					<h3>Popular Posts</h3>
+					{% for i in topthree %}
+					<div class="agileits_popular_posts_grid">
+						<div class="w3agile_special_deals_grid_left_grid">
+							<a href="singlepage.html"><img src="{{i.image.url}}" class="img-responsive" alt="" /></a>
+						</div>
+						<h4><a href="singlepage.html">{{i.title}}</a></h4>
+						<h5><i class="fa fa-calendar" aria-hidden="true"></i>{{i.date}}</h5>
+					</div>
+					{% endfor %}
+
+				</div>
+				
+				<div class="w3l_categories">
+					<h3>Categories</h3>
+					{% for i in all_cat %}
+					<ul>
+						<li><a href="singlepage.html"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>{{i.name}}</a></li>
+
+					</ul>
+					{% endfor %}
+				</div>
+			<div class="w3ls_recent_posts">
+					<h3>Recent Posts</h3>
+				{% for i in recent %}
+					<div class="agileits_recent_posts_grid">
+						<div class="agileits_recent_posts_gridl">
+							<div class="w3agile_special_deals_grid_left_grid">
+									<a href="singlepage.html"><img src="{{i.image.url}}" class="img-responsive" alt="" /></a>
+								</div>
+						</div>
+						<div class="agileits_recent_posts_gridr">
+							<h4><a href="singlepage.html">{{i.title}}</a></h4>
+							<h5><i class="fa fa-calendar" aria-hidden="true"></i>{{i.date}}</h5>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				{% endfor %}
+					</div>
+			
+			</div>
+			<!-- //btm-wthree-right -->
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+	<!-- banner -->
+	<div class="agile-banner">
+	</div>
+	<!-- //banner -->
+	<!-- breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="container">
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="{% url 'home' %}">Home</a></li>
+				<li class="active">SignUp</li>
+			</ol>
+		</div>
+	</div>
+<!-- //breadcrumbs -->
+
+	<!-- contact -->
+	<div class="container">
+		<!-- mail -->
+	<div class="banner-bottom">
+			<div class="agileits_heading_section">
+				<h3 class="wthree_head">Create New Account</h3>
+				
+			</div>
+			
+			<div class="w3ls_portfolio_grids w3_agile_mail_grids">
+				{% if error2 %}
+    				<script>alert('Username already Exists')</script>
+				{% endif %}
+				<form action="#" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+					<div class="col-md-12 w3_agile_mail_grid">
+						<div class="col-md-6 w3_agile_mail_grid">
+						<span class="input input--ichiro">
+							<input class="input__field input__field--ichiro" type="text" id="input-25" name="name" placeholder=" " required="" />
+							<label class="input__label input__label--ichiro" for="input-25">
+								<span class="input__label-content input__label-content--ichiro">Your Name</span>
+							</label>
+						</span></div>
+						<div class="col-md-6 w3_agile_mail_grid">
+						<span class="input input--ichiro">
+							<input class="input__field input__field--ichiro" type="email" id="input-26" name="email" placeholder=" " required="" />
+							<label class="input__label input__label--ichiro" for="input-26">
+								<span class="input__label-content input__label-content--ichiro">Your Email</span>
+							</label>
+						</span></div>
+						<div class="col-md-6 w3_agile_mail_grid">
+						<span class="input input--ichiro">
+							<input class="input__field input__field--ichiro" type="text" id="input-27" name="user" placeholder=" " required="" />
+							<label class="input__label input__label--ichiro" for="input-27">
+								<span class="input__label-content input__label-content--ichiro">Your UserName</span>
+							</label>
+						</span></div>
+						<div class="col-md-6 w3_agile_mail_grid">
+						<span class="input input--ichiro">
+							<input class="input__field input__field--ichiro" type="file" id="input" name="image" placeholder=" " required="" />
+							<label class="input__label input__label--ichiro" for="input">
+								<span class="input__label-content input__label-content--ichiro">Your Image</span>
+							</label>
+						</span></div>
+						<div class="col-md-6 w3_agile_mail_grid">
+						<span class="input input--ichiro">
+							<input class="input__field input__field--ichiro" type="password" id="input-28" name="password" placeholder=" " required="" />
+							<label class="input__label input__label--ichiro" for="input-28">
+								<span class="input__label-content input__label-content--ichiro">Your Password</span>
+							</label>
+						</span></div>
+						<div class="row">
+							<center>
+						<input type="submit" value="SignUp" style="width: 50%"></center>
+					</div>
+					</div>
+					
+					<div class="clearfix"> </div>
+				</form>
+			</div>
+		
+	</div>
+<!-- //mail -->
+
+	</div>
+	<!-- //contact -->
+
+{% endblock %}
